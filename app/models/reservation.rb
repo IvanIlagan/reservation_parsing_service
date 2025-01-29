@@ -48,4 +48,21 @@ class Reservation < ApplicationRecord
                             :payout_price,
                             :security_price,
                             :total_price
+
+  validate :start_date_not_greater_than_end_date
+  validate :end_date_not_less_than_start_date
+
+  private
+
+  def start_date_not_greater_than_end_date
+    if (start_date.present? && end_date.present?) && start_date > end_date
+      errors.add(:start_date, "must not be greater than end date")
+    end
+  end
+
+  def end_date_not_less_than_start_date
+    if (start_date.present? && end_date.present?) && end_date < start_date
+      errors.add(:end_date, "must not be less than start date")
+    end
+  end
 end
