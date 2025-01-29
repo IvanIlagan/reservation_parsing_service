@@ -1,24 +1,21 @@
 # README
+## Prerequisites
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install the ff in their specific versions:
+* Ruby version: 3.2.2
+* Rails version: 7.1.5.1
+* PostgreSQL version: 14.12
 
-Things you may want to cover:
+## How To Run The Server
+run the commands
+```bash
+bundle install
+rails db:create
+rails db:migrate
+rails s -p <port_number>
+```
+## How To Run Tests
+run the command `bundle exec rspec .`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## API
+Check out API details at [API_DOCS](./API_DOCS.md)
