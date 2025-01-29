@@ -57,6 +57,38 @@ RSpec.describe Reservation, type: :model do
     it { should validate_numericality_of(:payout_price) }
     it { should validate_numericality_of(:security_price) }
     it { should validate_numericality_of(:total_price) }
+
+    context "when validating start date" do
+      context "when start date is greater than end date" do
+        it "is invalid" do
+          reservation.start_date = Date.today + 5.day
+
+          expect(reservation).to be_invalid
+        end
+      end
+
+      context "when start date is less than end date" do
+        it "is valid" do
+          expect(reservation).to be_valid
+        end
+      end
+    end
+
+    context "when validating end date" do
+      context "when end date is less than start date" do
+        it "is invalid" do
+          reservation.end_date = Date.today - 5.day
+
+          expect(reservation).to be_invalid
+        end
+      end
+
+      context "when end date is greater than start date" do
+        it "is valid" do
+          expect(reservation).to be_valid
+        end
+      end
+    end
   end
 
   describe "Associations" do
