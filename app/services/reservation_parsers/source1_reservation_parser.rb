@@ -55,10 +55,6 @@ module ReservationParsers
       @data["total_paid_amount_accurate"]
     end
 
-    def guest_id
-      @data["guest_id"]
-    end
-
     private
 
     def guest_details

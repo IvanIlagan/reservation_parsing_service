@@ -49,9 +49,5 @@ module ReservationParsers
     def total_price
       @data["total_price"]
     end
-
-    def guest_id
-      @data["guest"].try(:[], "id")
-    end
   end
 end
