@@ -37,7 +37,6 @@ FactoryBot.define do
     payout_price { "5000.00" }
     security_price { "1000.00" }
     total_price { "6000.00" }
-
-    guest
+    guest_id { create(:guest).id }
   end
 end

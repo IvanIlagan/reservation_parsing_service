@@ -1,12 +1,6 @@
 class ReservationsService
   def save_reservation_from_different_sources(payload)
-    if payload.key?("reservation")
-      guest = GuestParsers::Source1GuestParser.new(payload).model
-      reservation = ReservationParsers::Source1ReservationParser.new(payload).model
-    else
-      guest = GuestParsers::Source2GuestParser.new(payload).model
-      reservation = ReservationParsers::Source2ReservationParser.new(payload).model
-    end
+    guest, reservation = extract_data(payload)
 
     guest = Guest.find_by(email: guest.email) || guest
 
@@ -40,5 +34,17 @@ class ReservationsService
       error:,
       error_http_status:
     )
+  end
+
+  def extract_data(payload)
+    if payload.key?("reservation")
+      guest = GuestParsers::Source1GuestParser.new(payload).model
+      reservation = ReservationParsers::Source1ReservationParser.new(payload).model
+    else
+      guest = GuestParsers::Source2GuestParser.new(payload).model
+      reservation = ReservationParsers::Source2ReservationParser.new(payload).model
+    end
+
+    [guest,reservation]
   end
 end

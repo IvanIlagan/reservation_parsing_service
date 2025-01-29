@@ -47,6 +47,7 @@ RSpec.describe Reservation, type: :model do
     it { should validate_presence_of(:payout_price) }
     it { should validate_presence_of(:security_price) }
     it { should validate_presence_of(:total_price) }
+    it { should validate_presence_of(:guest_id) }
 
     it { should validate_numericality_of(:nights) }
     it { should validate_numericality_of(:number_of_adults) }

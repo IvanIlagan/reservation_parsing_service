@@ -6,7 +6,6 @@ module ReservationParsers
 
     def model
       Reservation.new(
-        guest_id:,
         start_date:,
         end_date:,
         nights:,

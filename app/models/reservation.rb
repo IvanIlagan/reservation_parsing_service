@@ -37,7 +37,8 @@ class Reservation < ApplicationRecord
                         :payment_currency,
                         :payout_price,
                         :security_price,
-                        :total_price
+                        :total_price,
+                        :guest_id
 
   validates_numericality_of :nights,
                             :number_of_adults,
