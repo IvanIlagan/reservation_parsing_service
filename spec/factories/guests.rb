@@ -14,9 +14,11 @@
 #
 #  unique_emails  (email) UNIQUE
 #
-class Guest < ApplicationRecord
-  validates_presence_of :first_name, :last_name, :email, :phone_numbers
-  validates_uniqueness_of :email
-
-  has_many :reservations
+FactoryBot.define do
+  factory :guest do
+    email { "test@test.com" }
+    first_name { "Test" }
+    last_name { "Guest" }
+    phone_numbers { ["123"] }
+  end
 end

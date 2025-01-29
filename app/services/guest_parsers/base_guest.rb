@@ -6,7 +6,6 @@ module GuestParsers
 
     def model
       Guest.new(
-        id:,
         email:,
         first_name:,
         last_name:,
@@ -15,10 +14,6 @@ module GuestParsers
     end
 
     protected
-
-    def id
-      raise NotImplementedError
-    end
 
     def email
       raise NotImplementedError
