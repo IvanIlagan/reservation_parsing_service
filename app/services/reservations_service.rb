@@ -8,7 +8,9 @@ class ReservationsService
       reservation = ReservationParsers::Source2ReservationParser.new(payload).model
     end
 
-    if Guest.find_by(email: guest.email).present? || guest.save
+    guest = Guest.find_by(email: guest.email) || guest
+
+    if guest.persisted? || guest.save
       reservation.guest_id = guest.id
 
       if reservation.save
